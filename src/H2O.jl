@@ -1,14 +1,9 @@
 module H2O
 
-#Right now, development is progressing assuming the pip install h2o has already taken place
-#Something like the following would need to occur, although conda doesn't fall back on pip for installation:
-#Conda.add("h2o")
+#Right now, development is progressing assuming H2O cluster is started externally
 
-using PyCall, JSON
+using JSON
 import Requests: get, put, readall
-@pyimport h2o
-
-
 
 #global vars
 export H2Oip, H2Oport
@@ -17,13 +12,12 @@ export H2Oip, H2Oport
 export ClusterInfo
 
 #functions
-export clusterinfo, createframe
+#not exporting functions by convention at this point
 
 #Type files
 include("types/clusterinfo.jl")
 
 #Function files
 include("cluster.jl")
-include("data.jl")
 
 end # module
