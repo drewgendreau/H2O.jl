@@ -4,10 +4,11 @@ module H2O
 #Something like the following would need to occur, although conda doesn't fall back on pip for installation:
 #Conda.add("h2o")
 
-using PyCall, Conda, Requests, JSON
+using PyCall, JSON
+import Requests: get, put, readall
 @pyimport h2o
 
-import Requests: get
+
 
 #global vars
 export H2Oip, H2Oport
@@ -16,12 +17,13 @@ export H2Oip, H2Oport
 export ClusterInfo
 
 #functions
-export clusterinfo
+export clusterinfo, createframe
 
 #Type files
 include("types/clusterinfo.jl")
 
 #Function files
 include("cluster.jl")
+include("data.jl")
 
 end # module
