@@ -1,23 +1,24 @@
-module H2O
+module h2o
+  #Right now, development is progressing assuming H2O cluster is started externally
 
-#Right now, development is progressing assuming H2O cluster is started externally
+  using JSON
+  import Requests: get, put, post, readall
 
-using JSON
-import Requests: get, put, readall
+  #global vars
+  export H2Oip, H2Oport
 
-#global vars
-export H2Oip, H2Oport
+  #types
+  export ClusterInfo
 
-#types
-export ClusterInfo
+  #functions
+  #not exporting functions by convention at this point
 
-#functions
-#not exporting functions by convention at this point
+  #Type files
+  include("types/clusterinfo.jl")
 
-#Type files
-include("types/clusterinfo.jl")
-
-#Function files
-include("cluster.jl")
+  #Function files
+  include("cluster.jl")
+  include("helpers.jl")
+  include("createframe.jl")
 
 end # module
