@@ -14,9 +14,9 @@ end
 #shutdown(;conn = nothing, prompt::Bool = false) = h2o.shutdown(conn = conn, prompt = prompt)
 
 #Return cluster info (after you've started the cluster)
-function clusterinfo()
+function cluster_info()
 
-	results = geth2o("Cloud", "skip_ticks=true")
+	results = h2o_get("Cloud", "skip_ticks=true")
 	result_json = JSON.parse(readall(results))
 
 	return result_json

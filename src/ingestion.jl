@@ -1,7 +1,22 @@
+# functions for getting data into H2O
+
+function upload_file(path;
+                     destination_frame = "",
+                     parse = true,
+                     header = null)
+
+    this
+    that
+    other
 
 
+end
 
-function createframe(;rows = 10000,
+h2o.uploadFile(path, destination_frame = "", parse = TRUE, header = NA,
+sep = "", col.names = NULL, col.types = NULL, na.strings = NULL,
+progressBar = FALSE, parse_type = NULL)
+
+function create_frame(;rows = 10000,
                      cols = 1000,
                      randomize = true,
                      value = 0,
@@ -17,7 +32,7 @@ function createframe(;rows = 10000,
                      seed = 0,
                      key = 0)
 
-  results = posth2o("CreateFrame",
+  results = h2o_post("CreateFrame",
                     "rows=$(rows)",
                     "cols=$(cols)",
                     "randomize=$(randomize)",

@@ -19,6 +19,7 @@ module h2o
   #Function files
   include("cluster.jl")
   include("helpers.jl")
-  include("createframe.jl")
+  include("ingestion.jl")
+  include("info.jl")
 
 end # module

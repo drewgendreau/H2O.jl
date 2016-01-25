@@ -1,40 +1,36 @@
 # helper functions
 
-function geth2o(endpoint::AbstractString, args...)
+function h2o_get(endpoint::AbstractString, args...; version = 3)
+    url = "http://$(H2Oip):$(H2Oport)/$(version)/$(endpoint)"
 
-  url = "http://$(H2Oip):$(H2Oport)/3/$(endpoint)"
-
-  if !isempty(args)
-    url = string(url, "?")
-    for i in args
-      url = string(url, i, "&")
+    if !isempty(args)
+        url = string(url, "?")
+        for i in args
+            url = string(url, i, "&")
+        end
+            url = url[1:end-1]
     end
-    url = url[1:end-1]
-  end
 
-  results = get(url)
+    println("h2o_get: ", url, "\n")  # for debugging, remove later
 
-  return results
-
+    results = get(url)
+    return results
 end
 
 
-function posth2o(endpoint::AbstractString, args...)
+function h2o_post(endpoint::AbstractString, args...; version = 3)
+    url = "http://$(H2Oip):$(H2Oport)/$(version)/$(endpoint)"
 
-  url = "http://$(H2Oip):$(H2Oport)/3/$(endpoint)"
-
-  if !isempty(args)
-    url = string(url, "?")
-    for i in args
-      url = string(url, i, "&")
+    if !isempty(args)
+        url = string(url, "?")
+        for i in args
+            url = string(url, i, "&")
+        end
+        url = url[1:end-1]
     end
-    url = url[1:end-1]
-  end
 
-  println(url)
+    println("h2o_post: ", url, "\n")   # for debugging, remove later
 
-  results = post(url)
-
-  return results
-
+    results = post(url)
+    return results
 end
